@@ -12,8 +12,8 @@ exports.createUser = async (requestBody) => {
   return User.create(requestBody);
 };
 
-exports.updateAgent = async (requestId, requestBody) => {
-  return Agent.findByIdAndUpdate(requestId, {
+exports.updateUser = async (requestId, requestBody) => {
+  return User.findByIdAndUpdate(requestId, {
     firstName: requestBody.firstName,
     lastName: requestBody.lastName,
     email: requestBody.email,
@@ -24,6 +24,6 @@ exports.updateAgent = async (requestId, requestBody) => {
   });
 };
 
-exports.deleteAgent = async (requestId) => {
-  return Agent.deleteOne({ _id: requestId });
+exports.deleteUser = async (requestId) => {
+  return User.deleteOne({ _id: requestId });
 };

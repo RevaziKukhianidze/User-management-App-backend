@@ -42,7 +42,7 @@ exports.postItemController = catchAsync(async (req, res) => {
 });
 
 exports.putItemController = catchAsync(async (req, res) => {
-  const serviceResult = await userService.updateAgent(req.params.id, req.body);
+  const serviceResult = await userService.updateUser(req.params.id, req.body);
   if (serviceResult) {
     return okResponse({ res, data: serviceResult });
   }
@@ -50,7 +50,7 @@ exports.putItemController = catchAsync(async (req, res) => {
 });
 
 exports.deleteItemController = catchAsync(async (req, res, next) => {
-  const serviceResult = await userService.deleteAgent(req.params.id);
+  const serviceResult = await userService.deleteUser(req.params.id);
 
   if (serviceResult["deletedCount"] > 0) {
     return okResponse({ res, data: "" });

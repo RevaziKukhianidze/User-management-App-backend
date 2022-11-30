@@ -54,6 +54,7 @@ exports.putItemController = catchAsync(async (req, res) => {
 
 exports.deleteItemController = catchAsync(async (req, res, next) => {
   const serviceResult = await categoryService.deleteCategory(req.params.id);
+  console.log(serviceResult);
 
   if (serviceResult["deletedCount"] > 0) {
     return okResponse({ res, data: "" });
