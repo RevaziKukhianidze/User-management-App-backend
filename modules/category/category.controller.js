@@ -10,7 +10,7 @@ const {
 } = require("../common/utils/response.handler");
 
 exports.getSingleItemController = catchAsync(async (req, res) => {
-  const validate = requestValidation.categorySchema.validate(req.params);
+  const validate = requestValidation.categoryIdSchema.validate(req.params);
   if (validate.error) {
     return badRequestResponse(res);
   }
