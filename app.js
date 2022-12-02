@@ -1,7 +1,9 @@
 const express = require("express");
 
-const categoryRouter = require("./modules/category/category.routes");
 const userRouter = require("./modules/user/user.routes");
+const categoryRouter = require("./modules/category/category.routes");
+const statusController = require("./modules/status/status.routes");
+
 const app = express();
 
 if (process.env.NODE_ENV === "development ") {
@@ -29,8 +31,8 @@ app.use((req, res, next) => {
 });
 
 //routes
-
-app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/categories", categoryRouter);
+app.use("/api/v1/statuses", statusController);
 
 module.exports = app;

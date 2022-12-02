@@ -1,5 +1,5 @@
-const requestValidation = require("./category.requests.schema");
-const categoryService = require("./category.services");
+const requestValidation = require("./status.requests.schema");
+const statusService = require("./status.services");
 const catchAsync = require("./../common/utils/catchAsync");
 const {
   okResponse,
@@ -10,11 +10,11 @@ const {
 } = require("../common/utils/response.handler");
 
 exports.getSingleItemController = catchAsync(async (req, res) => {
-  const validate = requestValidation.categoryIdSchema.validate(req.params);
+  const validate = requestValidation.statusIdSchema.validate(req.params);
   if (validate.error) {
     return badRequestResponse(res);
   }
-  const serviceResult = await categoryService.getSingleCategory(req.params.id);
+  const serviceResult = await statusService.getSingleStatus(req.params.id);
   if (serviceResult) {
     return okResponse({ res, data: serviceResult });
   }
@@ -22,7 +22,7 @@ exports.getSingleItemController = catchAsync(async (req, res) => {
 });
 
 exports.getItemsController = catchAsync(async (req, res) => {
-  const serviceResult = await categoryService.getCategories(req.params);
+  const serviceResult = await statusService.getStatuses(req.params);
   if (serviceResult) {
     return okResponseList({ res, data: serviceResult });
   }
@@ -30,11 +30,11 @@ exports.getItemsController = catchAsync(async (req, res) => {
 });
 
 exports.postItemController = catchAsync(async (req, res) => {
-  const validate = requestValidation.categorySchema.validate(req.body);
+  const validate = requestValidation.statusSchema.validate(req.body);
   if (validate.error) {
     return badRequestResponse(res);
   }
-  const serviceResult = await categoryService.createCategory(validate.value);
+  const serviceResult = await statusService.createStatus(validate.value);
   if (serviceResult) {
     return okResponse({ res, data: serviceResult });
   }
@@ -42,7 +42,7 @@ exports.postItemController = catchAsync(async (req, res) => {
 });
 
 exports.putItemController = catchAsync(async (req, res) => {
-  const serviceResult = await categoryService.updateCategory(
+  const serviceResult = await statusService.updateStatus(
     req.params.id,
     req.body
   );
@@ -53,7 +53,7 @@ exports.putItemController = catchAsync(async (req, res) => {
 });
 
 exports.deleteItemController = catchAsync(async (req, res) => {
-  const serviceResult = await categoryService.deleteCategory(req.params.id);
+  const serviceResult = await statusService.deleteStatus(req.params.id);
 
   if (serviceResult["deletedCount"] > 0) {
     return okResponse({ res, data: "" });

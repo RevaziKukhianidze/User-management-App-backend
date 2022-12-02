@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
   categoryName: {
     type: String,
-    required: [true, "Please provide category name"],
+    required: [true, "Please provide category category"],
   },
 });
 
-const category = mongoose.model("category", userSchema);
+const category = mongoose.model("category", categorySchema);
 module.exports = category;
