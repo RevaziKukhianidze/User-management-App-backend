@@ -1,9 +1,5 @@
 const Status = require("./entities/status.model");
 
-exports.getSingleStatus = async (requestBody) => {
-  return Status.findById(requestBody);
-};
-
 exports.getStatuses = async (requestBody) => {
   return Status.find(requestBody);
 };

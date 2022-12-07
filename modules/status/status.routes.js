@@ -9,7 +9,6 @@ router
 
 router
   .route("/:id")
-  .get(statusController.getSingleItemController)
   .put(statusController.putItemController)
   .delete(statusController.deleteItemController);
 

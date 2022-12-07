@@ -9,18 +9,6 @@ const {
   notFoundResponse,
 } = require("../common/utils/response.handler");
 
-exports.getSingleItemController = catchAsync(async (req, res) => {
-  const validate = requestValidation.statusIdSchema.validate(req.params);
-  if (validate.error) {
-    return badRequestResponse(res);
-  }
-  const serviceResult = await statusService.getSingleStatus(req.params.id);
-  if (serviceResult) {
-    return okResponse({ res, data: serviceResult });
-  }
-  return notFoundResponse(res);
-});
-
 exports.getItemsController = catchAsync(async (req, res) => {
   const serviceResult = await statusService.getStatuses(req.params);
   if (serviceResult) {

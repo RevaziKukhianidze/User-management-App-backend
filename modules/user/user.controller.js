@@ -23,6 +23,7 @@ exports.getSingleItemController = catchAsync(async (req, res) => {
 
 exports.getItemsController = catchAsync(async (req, res) => {
   const serviceResult = await userService.getUsers(req.params);
+
   if (serviceResult) {
     return okResponseList({ res, data: serviceResult });
   }

@@ -9,18 +9,6 @@ const {
   notFoundResponse,
 } = require("../common/utils/response.handler");
 
-exports.getSingleItemController = catchAsync(async (req, res) => {
-  const validate = requestValidation.categoryIdSchema.validate(req.params);
-  if (validate.error) {
-    return badRequestResponse(res);
-  }
-  const serviceResult = await categoryService.getSingleCategory(req.params.id);
-  if (serviceResult) {
-    return okResponse({ res, data: serviceResult });
-  }
-  return notFoundResponse(res);
-});
-
 exports.getItemsController = catchAsync(async (req, res) => {
   const serviceResult = await categoryService.getCategories(req.params);
   if (serviceResult) {

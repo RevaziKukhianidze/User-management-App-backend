@@ -1,9 +1,5 @@
 const Category = require("./entities/category.model");
 
-exports.getSingleCategory = async (requestBody) => {
-  return Category.findById(requestBody);
-};
-
 exports.getCategories = async (requestBody) => {
   return Category.find(requestBody);
 };
